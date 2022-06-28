@@ -5,7 +5,6 @@ import MyBadge from './components/MyBadge';
 import SingleBook from './components/SingleBook';
 import BookList from './components/BookList';
 import horrorBooks from "./data/horror.json";
-import CommentArea from './components/CommentArea';
 
 
 
@@ -17,7 +16,6 @@ function App() {
       <MyBadge text="Check!" color="secondary" />
       <SingleBook book={horrorBooks[0]} category="Horror" />
       <BookList books={horrorBooks} />
-      <CommentArea />
     </div>
   );
 }

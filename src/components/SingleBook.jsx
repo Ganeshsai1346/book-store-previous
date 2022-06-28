@@ -1,19 +1,32 @@
 /** @format */
 import { Component } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
+import CommentArea from "./CommentArea";
 
 class SingleBook extends Component {
+  state = {
+    selected: false,
+  };
   render() {
     return (
       <Container className="bg">
         <Row>
           <Col className="mb-5 ">
-            <Card id="card">
+            <Card
+              id="card"
+              key={this.props.book.asin}
+              onClick={() => this.setState({ selected: !this.state.selected })}
+              style={{
+                border: this.state.selected ? "4px solid red" : "none",
+              }}>
               <Card.Img id="cardImg" variant="top" src={this.props.book.img} />
               <Card.Body>
                 <Card.Title className="card-title">
                   {this.props.book.title}
                 </Card.Title>
+                {this.state.selected && (
+                  <CommentArea asin={this.props.book.asin} />
+                )}
               </Card.Body>
             </Card>
           </Col>

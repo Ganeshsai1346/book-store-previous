@@ -38,15 +38,9 @@
 .App {
   background-color: #282c34;
 }
-.card {
-  align-items: center;
-}
+
 #card {
   background: inherit;
   border: none;
   color: white;
-}
-#cardImg {
-  height: 220px;
-  width: 150px;
 }

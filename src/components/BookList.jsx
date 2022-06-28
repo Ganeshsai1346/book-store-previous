@@ -29,13 +29,7 @@ class BookList extends Component {
           {this.props.books
             .filter((oneBook) => oneBook.title.includes(this.state.searchQuery))
             .map((oneBook) => (
-              <Col
-                key={oneBook.asin}
-                xs={12}
-                sm={6}
-                md={4}
-                lg={2}
-                className="mb-5">
+              <Col key={oneBook.asin} xs={12} sm={6} md={4} className="mb-5">
                 <SingleBook book={oneBook} />
               </Col>
             ))}

@@ -1,7 +1,8 @@
 /** @format */
 
 import { Component } from "react";
-import { ListGroup } from "react-bootstrap";
+
+import CommentList from "./CommentList";
 
 class CommentArea extends Component {
   state = {
@@ -13,7 +14,9 @@ class CommentArea extends Component {
   };
   fetchComments = async () => {
     try {
-      const url = "https://striveschool-api.herokuapp.com/api/comments/";
+      const url =
+        "https://striveschool-api.herokuapp.com/api/comments/" +
+        this.props.asin;
 
       const response = await fetch(url, {
         headers: {
@@ -24,7 +27,6 @@ class CommentArea extends Component {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         this.setState({
           comments: data,
         });
@@ -38,11 +40,11 @@ class CommentArea extends Component {
 
   render() {
     return (
-      <ListGroup>
-        {this.state.comments.map((comment) => (
-          <ListGroup.Item key={comment._id}>{comment.comment}</ListGroup.Item>
-        ))}
-      </ListGroup>
+      <div>
+        {this.state.comments && (
+          <CommentList commentsArray={this.state.comments} />
+        )}
+      </div>
     );
   }
 }
